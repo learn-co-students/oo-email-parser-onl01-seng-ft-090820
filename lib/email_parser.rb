@@ -1,23 +1,13 @@
-class EmailParser
-attr_accessor :emails 
+class EmailAddressParser
+   attr_accessor :email_addresses
 
-def initialize(emails)
-  @emails = emails
-end 
+  def initialize (email_addresses)
+    @email_addresses = email_addresses
+  end
 
-def parse
-  puts splitEmail = emails.split.collect {|address| address.split(',')} 
-  returnArr = splitEmail.flatten.uniq
-  returnArr
+  def parse
+    array=@email_addresses.split /\s|,\s/
+    array.uniq
+  end
+
 end
-
-end
-
-emails1 = "asd@qw.com, per@er.org, Zaza@sugar.net"
-parser1 = EmailParser.new(emails1)
-parser1.parse 
-
-emails2 = "asd@qw.com per@er.org per@er.org Zaza@sugar.net"
-parser2 = EmailParser.new(emails2)
-parser2.parse
-
